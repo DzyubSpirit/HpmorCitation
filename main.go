@@ -18,6 +18,7 @@ const (
 	citationKind = "Citation"
 )
 
+// Citation is a struct for storing in datastore.
 type Citation struct {
 	ID   *datastore.Key
 	Text string
@@ -56,6 +57,7 @@ func main() {
 
 		switch update.Message.Command() {
 		case "usage":
+		case "help":
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "/add <citation> - adds citation\n/cite - sends random citation")
 			if _, err := bot.Send(msg); err != nil {
 				log.Errorf(ctx, "sending message about saved citation: %v", err)
